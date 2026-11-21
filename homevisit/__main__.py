@@ -1,14 +1,14 @@
 import argparse
 import json
 from pathlib import Path
-from . import contract,dispatch,visit
+from . import contract,dispatch,visit,insurance,portal
 from .source import file_record
 from .store import connect
 from .report import report,dumps
 
 def run_import(db,command,raw):
     data=json.loads(raw);file_record(db,command,raw)
-    return {'contract-import':contract.import_data,'worker-import':dispatch.import_data,'visit-import':visit.import_data}[command](db,data)
+    return {'contract-import':contract.import_data,'worker-import':dispatch.import_data,'visit-import':visit.import_data,'insurance-import':insurance.import_data,'portal-import':portal.import_data}[command](db,data)
 
 def audit(db):
     replay=connect(':memory:')
@@ -21,7 +21,7 @@ def audit(db):
 
 def main(argv=None):
     p=argparse.ArgumentParser(prog='homevisit')
-    p.add_argument('command',choices=['contract-import','worker-import','visit-import','report','audit','demo'])
+    p.add_argument('command',choices=['contract-import','worker-import','visit-import','insurance-import','portal-import','report','audit','demo'])
     p.add_argument('--db',required=True);p.add_argument('--file');a=p.parse_args(argv)
     db=connect(a.db)
     try:
