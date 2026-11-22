@@ -8,8 +8,14 @@ def import_data(db, data):
     with db:
         for row in data.get('requests', []):
             if record(db, row['event_id'], 'data_request', row):
-                db.execute('INSERT INTO data_request VALUES(?,?,?,?,?,?)',
-                           (row['event_id'], row['requester'], row['job'], row['recipient'], row['scope'], row['signed_by']))
+                db.execute('INSERT INTO data_request VALUES(?,?,?,?,?,?,?,?)',
+                           (row['event_id'], row['requester'], row['job'], row['recipient'], row['scope'],
+                            row['signed_by'], row.get('valid_from'), row.get('valid_to')))
             touched.append(row['event_id'])
+        for row in data.get('withdrawals', []):
+            if record(db, row['event_id'], 'privacy_withdrawal', row):
+                db.execute('INSERT INTO request_withdrawal VALUES(?,?,?,?)',
+                           (row['event_id'], row['withdraws'], row['requester'], row['signed_by']))
+            touched.append(row['withdraws'])
         from .export import decide
         return [decide(db, request_id) for request_id in sorted(set(touched))]

@@ -1,0 +1,1 @@
+{"changes":[{"event_id":"change-1","job":"job-1","version":2,"kind":"reschedule","address":null,"start":"2026-11-03T09:00","end":"2026-11-03T12:00","task":null,"signed_by":"client-a"}]}

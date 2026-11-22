@@ -1,0 +1,1 @@
+{"requests":[{"event_id":"privacy-request-self","requester":"client-a","job":"job-1","recipient":"client-a","scope":"own-service","signed_by":"client-a"},{"event_id":"privacy-request-agent","requester":"client-a","job":"job-1","recipient":"agent-ins","scope":"dispute,schedule","signed_by":"client-a","valid_to":"2026-11-03T00:00"}]}

@@ -14,12 +14,19 @@ CREATE TABLE IF NOT EXISTS visit_receipt(event_id TEXT PRIMARY KEY,job TEXT NOT 
 CREATE TABLE IF NOT EXISTS task_acceptance(event_id TEXT PRIMARY KEY,job TEXT NOT NULL,task TEXT NOT NULL,accepted INTEGER NOT NULL,client TEXT NOT NULL,dispute TEXT);
 CREATE TABLE IF NOT EXISTS settlement_decision(job TEXT PRIMARY KEY,state TEXT NOT NULL,reason TEXT NOT NULL,minutes INTEGER NOT NULL,payable INTEGER NOT NULL,frozen INTEGER NOT NULL,version INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS decision_history(id INTEGER PRIMARY KEY,subsystem TEXT NOT NULL,job TEXT NOT NULL,version INTEGER NOT NULL,state TEXT NOT NULL,reason TEXT NOT NULL,at TEXT DEFAULT CURRENT_TIMESTAMP);
-CREATE TABLE IF NOT EXISTS data_request(event_id TEXT PRIMARY KEY,requester TEXT NOT NULL,job TEXT NOT NULL,recipient TEXT NOT NULL,scope TEXT NOT NULL,signed_by TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS data_request(event_id TEXT PRIMARY KEY,requester TEXT NOT NULL,job TEXT NOT NULL,recipient TEXT NOT NULL,scope TEXT NOT NULL,signed_by TEXT NOT NULL,valid_from TEXT,valid_to TEXT);
+CREATE TABLE IF NOT EXISTS request_withdrawal(event_id TEXT PRIMARY KEY,target TEXT NOT NULL,requester TEXT NOT NULL,signed_by TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS export_package(request_id TEXT PRIMARY KEY,state TEXT NOT NULL,reason TEXT NOT NULL,record_count INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS export_delivery(request_id TEXT NOT NULL,version INTEGER NOT NULL,recipient TEXT NOT NULL,job TEXT NOT NULL,state TEXT NOT NULL,reason TEXT NOT NULL,sha TEXT NOT NULL,fingerprint TEXT NOT NULL,body TEXT NOT NULL,superseded INTEGER NOT NULL DEFAULT 0,PRIMARY KEY(request_id,version));
 """
 
 def connect(path):
-    db=sqlite3.connect(path);db.row_factory=sqlite3.Row;db.executescript(SCHEMA);return db
+    db=sqlite3.connect(path);db.row_factory=sqlite3.Row;db.executescript(SCHEMA)
+    columns=[row[1] for row in db.execute('PRAGMA table_info(data_request)')]
+    if 'valid_to' not in columns:
+        db.execute('ALTER TABLE data_request ADD COLUMN valid_from TEXT')
+        db.execute('ALTER TABLE data_request ADD COLUMN valid_to TEXT')
+    return db
 
 def update(db,table,job,**fields):
     old=db.execute(f'SELECT * FROM {table} WHERE job=?',(job,)).fetchone()

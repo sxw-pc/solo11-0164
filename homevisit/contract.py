@@ -1,20 +1,25 @@
 from .source import record
 from .store import update
 
-def effective(db,job):
+def effective_detail(db,job):
     rows=db.execute('SELECT * FROM service_contract WHERE job=? ORDER BY version DESC,event_id',(job,)).fetchall()
-    if not rows:return None,None,'missing'
+    if not rows:return None,None,'missing',{}
     top=rows[0];same=[r for r in rows if r['version']==top['version']]
-    if len({(r['address'],r['start'],r['end'],r['task'],r['rate']) for r in same})>1:return None,top,'conflict'
+    sources={key:top['event_id'] for key in ('client','address','start','end','task','rate','signed_by','version')}
+    if len({(r['address'],r['start'],r['end'],r['task'],r['rate']) for r in same})>1:return None,top,'conflict',sources
     changes=db.execute('SELECT * FROM contract_change WHERE job=? ORDER BY version,event_id',(job,)).fetchall()
     current=dict(top)
     for change in changes:
         if change['version']<=top['version']:continue
         if change['signed_by']!=top['client']:continue
-        if change['kind']=='cancel':return None,top,'cancelled'
+        if change['kind']=='cancel':return None,top,'cancelled',sources
         for key in ('address','start','end','task'):
-            if change[key] is not None:current[key]=change[key]
-    return current,top,'valid'
+            if change[key] is not None:current[key]=change[key];sources[key]=change['event_id']
+    return current,top,'valid',sources
+
+def effective(db,job):
+    current,top,condition,_=effective_detail(db,job)
+    return current,top,condition
 
 def decide(db,job):
     contract,top,condition=effective(db,job)
