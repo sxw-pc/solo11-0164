@@ -1,14 +1,17 @@
 import argparse
 import json
 from pathlib import Path
-from . import contract,dispatch,visit
+from . import contract,dispatch,visit,material
 from .source import file_record
 from .store import connect
 from .report import report,dumps
 
+IMPORTS={'contract-import':contract.import_data,'worker-import':dispatch.import_data,
+         'visit-import':visit.import_data,'material-import':material.import_data}
+
 def run_import(db,command,raw):
     data=json.loads(raw);file_record(db,command,raw)
-    return {'contract-import':contract.import_data,'worker-import':dispatch.import_data,'visit-import':visit.import_data}[command](db,data)
+    return IMPORTS[command](db,data)
 
 def audit(db):
     replay=connect(':memory:')
@@ -21,7 +24,7 @@ def audit(db):
 
 def main(argv=None):
     p=argparse.ArgumentParser(prog='homevisit')
-    p.add_argument('command',choices=['contract-import','worker-import','visit-import','report','audit','demo'])
+    p.add_argument('command',choices=[*IMPORTS,'report','audit','demo'])
     p.add_argument('--db',required=True);p.add_argument('--file');a=p.parse_args(argv)
     db=connect(a.db)
     try:
@@ -29,7 +32,8 @@ def main(argv=None):
         if a.command=='audit':print(json.dumps(audit(db),ensure_ascii=False));return
         if a.command=='demo':
             root=Path(__file__).parent.parent/'fixtures'
-            for command,name in [('contract-import','contract_ok.json'),('worker-import','worker_ok.json'),('visit-import','visit_ok.json')]:
+            for command,name in [('contract-import','contract_ok.json'),('worker-import','worker_ok.json'),
+                                 ('visit-import','visit_ok.json'),('material-import','material_ok.json')]:
                 run_import(db,command,(root/name).read_bytes())
             print(dumps(db));return
         if not a.file:p.error('--file required')

@@ -43,7 +43,10 @@ def decide(db,job):
                         state,reason='disputed','client task acceptance carries unresolved dispute'
                         frozen,payable=payable,0
                     else:state,reason='settled','qualified worker, independent visit and accepted task verified'
-    return update(db,'settlement_decision',job,state=state,reason=reason,minutes=minutes,payable=payable,frozen=frozen)
+    result=update(db,'settlement_decision',job,state=state,reason=reason,minutes=minutes,payable=payable,frozen=frozen)
+    from .material import decide as material_decide
+    material_decide(db,job)
+    return result
 
 def import_data(db,data):
     touched=set()

@@ -1,0 +1,1 @@
+{"routes":[{"event_id":"route-2","job":"job-1","choice":"reschedule","at":"2026-11-02T08:55"}],"returns":[{"event_id":"return-1","job":"job-1","checkout":"checkout-r1","quantity":1,"opened":false,"at":"2026-11-02T08:56"}]}

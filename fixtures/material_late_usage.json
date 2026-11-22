@@ -1,0 +1,1 @@
+{"checkouts":[{"event_id":"checkout-9","batch_event":"batch-a","worker":"worker-b","quantity":1,"at":"2026-11-01T09:00","issued_by":"storekeeper-a","received_by":"worker-b","splits":[{"job":"job-9","quantity":1}]}],"usages":[{"event_id":"usage-9","job":"job-9","checkout":"checkout-9","quantity":1,"at":"2026-11-01T10:00"}]}
