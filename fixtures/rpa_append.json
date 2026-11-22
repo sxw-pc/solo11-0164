@@ -1,0 +1,12 @@
+{
+  "intents": [
+    {"operation": "op-0002", "claim_id": "claim-1", "kind": "append", "amount": 1500, "target_case": "ext-1", "at": "2026-11-06T10:00:00"}
+  ],
+  "portal": {
+    "submit": {"op-0002": {"result": "accepted", "external_case": "ext-1"}},
+    "query": {},
+    "receipts": [
+      {"event_id": "rpa-receipt-append-1", "claim_id": "claim-1", "external_case": "ext-1", "status": "under_review", "received_at": "2026-11-06T10:05:00"}
+    ]
+  }
+}

@@ -1,14 +1,23 @@
 import argparse
 import json
 from pathlib import Path
-from . import contract,dispatch,visit,insurance,portal
+from . import contract,dispatch,visit,insurance,portal,rpa
 from .source import file_record
 from .store import connect
 from .report import report,dumps
 
+IMPORTS={'contract-import':contract.import_data,'worker-import':dispatch.import_data,'visit-import':visit.import_data,
+         'insurance-import':insurance.import_data,'portal-import':portal.import_data,
+         'rpa-run':rpa.run_file,'rpa-recover':rpa.recover_file}
+
 def run_import(db,command,raw):
-    data=json.loads(raw);file_record(db,command,raw)
-    return {'contract-import':contract.import_data,'worker-import':dispatch.import_data,'visit-import':visit.import_data,'insurance-import':insurance.import_data,'portal-import':portal.import_data}[command](db,data)
+    data=json.loads(raw)
+    try:
+        file_record(db,command,raw)
+        return IMPORTS[command](db,data)
+    except Exception:
+        db.rollback()
+        raise
 
 def audit(db):
     replay=connect(':memory:')
@@ -21,7 +30,7 @@ def audit(db):
 
 def main(argv=None):
     p=argparse.ArgumentParser(prog='homevisit')
-    p.add_argument('command',choices=['contract-import','worker-import','visit-import','insurance-import','portal-import','report','audit','demo'])
+    p.add_argument('command',choices=['contract-import','worker-import','visit-import','insurance-import','portal-import','rpa-run','rpa-recover','report','audit','demo'])
     p.add_argument('--db',required=True);p.add_argument('--file');a=p.parse_args(argv)
     db=connect(a.db)
     try:

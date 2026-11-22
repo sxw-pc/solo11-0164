@@ -1,0 +1,8 @@
+{
+  "recover": ["op-0001"],
+  "portal": {
+    "submit": {},
+    "query": {"op-0001": {"result": "not_found"}},
+    "receipts": []
+  }
+}

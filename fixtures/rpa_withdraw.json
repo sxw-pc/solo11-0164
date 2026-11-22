@@ -1,0 +1,10 @@
+{
+  "intents": [
+    {"operation": "op-0003", "claim_id": "claim-1", "kind": "withdraw", "amount": 0, "target_case": "ext-1", "at": "2026-11-06T11:00:00"}
+  ],
+  "portal": {
+    "submit": {"op-0003": {"result": "accepted", "external_case": "ext-1"}},
+    "query": {},
+    "receipts": []
+  }
+}

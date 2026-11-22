@@ -1,0 +1,10 @@
+{
+  "recover": ["op-0001"],
+  "portal": {
+    "submit": {},
+    "query": {"op-0001": {"result": "found", "external_case": "ext-2", "status": "accepted"}},
+    "receipts": [
+      {"event_id": "rpa-receipt-basic-1", "claim_id": "claim-1", "external_case": "ext-2", "status": "accepted", "received_at": "2026-11-05T09:10:00", "operation": "op-0001"}
+    ]
+  }
+}

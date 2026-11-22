@@ -1,0 +1,12 @@
+{
+  "intents": [
+    {"operation": "op-0001", "claim_id": "claim-1", "kind": "submit", "amount": 5000, "at": "2026-11-05T09:00:00"}
+  ],
+  "portal": {
+    "submit": {"op-0001": {"result": "accepted", "external_case": "ext-2"}},
+    "query": {},
+    "receipts": [
+      {"event_id": "rpa-receipt-resubmit-1", "claim_id": "claim-1", "external_case": "ext-2", "status": "accepted", "received_at": "2026-11-05T09:20:00", "operation": "op-0001"}
+    ]
+  }
+}

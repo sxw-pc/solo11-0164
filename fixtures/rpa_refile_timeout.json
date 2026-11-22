@@ -1,0 +1,10 @@
+{
+  "intents": [
+    {"operation": "op-0004", "claim_id": "claim-1", "kind": "submit", "amount": 6500, "at": "2026-11-06T12:00:00"}
+  ],
+  "portal": {
+    "submit": {"op-0004": {"result": "timeout"}},
+    "query": {"op-0004": {"result": "found", "external_case": "ext-2", "status": "accepted"}},
+    "receipts": []
+  }
+}
