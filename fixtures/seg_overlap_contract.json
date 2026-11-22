@@ -1,0 +1,16 @@
+{
+  "contracts": [
+    {
+      "event_id": "seg-overlap-contract-1",
+      "job": "seg-overlap",
+      "version": 1,
+      "client": "client-a",
+      "address": "home-a",
+      "start": "2026-11-05T09:00",
+      "end": "2026-11-05T13:00",
+      "task": "clean",
+      "rate": 6000,
+      "signed_by": "client-a"
+    }
+  ]
+}

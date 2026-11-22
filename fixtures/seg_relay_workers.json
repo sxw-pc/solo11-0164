@@ -1,0 +1,57 @@
+{
+  "certificates": [
+    {
+      "event_id": "seg-relay-cert-1",
+      "worker": "worker-a",
+      "task": "clean",
+      "valid_from": "2026-01-01",
+      "valid_to": "2027-01-01",
+      "issuer": "agency"
+    },
+    {
+      "event_id": "seg-relay-cert-2",
+      "worker": "worker-b",
+      "task": "clean",
+      "valid_from": "2026-01-01",
+      "valid_to": "2027-01-01",
+      "issuer": "agency"
+    }
+  ],
+  "assignments": [
+    {
+      "event_id": "seg-relay-assign-1",
+      "job": "seg-relay",
+      "worker": "worker-a",
+      "at": "2026-11-04T09:00",
+      "client_approved": "client-a"
+    },
+    {
+      "event_id": "seg-relay-assign-2",
+      "job": "seg-relay",
+      "worker": "worker-b",
+      "at": "2026-11-04T09:30",
+      "client_approved": "client-a"
+    }
+  ],
+  "relay_requests": [
+    {
+      "event_id": "seg-relay-request-1",
+      "job": "seg-relay",
+      "at": "2026-11-05T11:00",
+      "from_worker": "worker-a",
+      "to_worker": "worker-b",
+      "client_approved": "client-a"
+    }
+  ],
+  "handovers": [
+    {
+      "event_id": "seg-relay-handover-1",
+      "job": "seg-relay",
+      "at": "2026-11-05T11:00",
+      "from_worker": "worker-a",
+      "to_worker": "worker-b",
+      "from_signed": "worker-a",
+      "to_signed": "worker-b"
+    }
+  ]
+}

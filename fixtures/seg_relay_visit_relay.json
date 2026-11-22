@@ -1,0 +1,11 @@
+{
+  "confirmations": [
+    {
+      "event_id": "seg-relay-confirm-relay",
+      "job": "seg-relay",
+      "route": "relay",
+      "client": "client-a",
+      "at": "2026-11-05T13:20"
+    }
+  ]
+}

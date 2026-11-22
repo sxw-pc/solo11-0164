@@ -1,0 +1,14 @@
+{
+  "changes": [
+    {
+      "event_id": "seg-relay-reschedule-1",
+      "job": "seg-relay",
+      "version": 2,
+      "kind": "reschedule",
+      "address": "home-a",
+      "start": "2026-11-06T10:00",
+      "end": "2026-11-06T14:00",
+      "signed_by": "client-a"
+    }
+  ]
+}

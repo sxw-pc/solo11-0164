@@ -1,0 +1,33 @@
+{
+  "receipts": [
+    {
+      "event_id": "seg-single-start-1",
+      "job": "seg-single",
+      "kind": "start",
+      "at": "2026-11-05T09:00",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-single-end-1",
+      "job": "seg-single",
+      "kind": "end",
+      "at": "2026-11-05T13:00",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    }
+  ],
+  "acceptances": [
+    {
+      "event_id": "seg-single-accept-1",
+      "job": "seg-single",
+      "task": "clean",
+      "accepted": true,
+      "client": "client-a"
+    }
+  ]
+}

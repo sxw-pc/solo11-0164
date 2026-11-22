@@ -1,0 +1,11 @@
+{
+  "revocations": [
+    {
+      "event_id": "seg-relay-revoke-1",
+      "worker": "worker-b",
+      "task": "clean",
+      "at": "2026-11-05T12:30",
+      "issuer": "agency"
+    }
+  ]
+}

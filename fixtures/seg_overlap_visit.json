@@ -1,0 +1,82 @@
+{
+  "receipts": [
+    {
+      "event_id": "seg-overlap-start-a",
+      "job": "seg-overlap",
+      "kind": "start",
+      "at": "2026-11-05T09:00",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-overlap-pause-a",
+      "job": "seg-overlap",
+      "kind": "pause",
+      "at": "2026-11-05T11:15",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-overlap-resume-a",
+      "job": "seg-overlap",
+      "kind": "resume",
+      "at": "2026-11-05T11:45",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-overlap-end-a",
+      "job": "seg-overlap",
+      "kind": "end",
+      "at": "2026-11-05T11:45",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-overlap-start-b",
+      "job": "seg-overlap",
+      "kind": "start",
+      "at": "2026-11-05T10:30",
+      "address": "home-a",
+      "worker": "worker-b",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-overlap-end-b",
+      "job": "seg-overlap",
+      "kind": "end",
+      "at": "2026-11-05T13:00",
+      "address": "home-a",
+      "worker": "worker-b",
+      "client": "client-a",
+      "task": "clean"
+    }
+  ],
+  "acceptances": [
+    {
+      "event_id": "seg-overlap-accept",
+      "job": "seg-overlap",
+      "task": "clean",
+      "accepted": true,
+      "client": "client-a"
+    }
+  ],
+  "confirmations": [
+    {
+      "event_id": "seg-overlap-confirm",
+      "job": "seg-overlap",
+      "route": "relay",
+      "client": "client-a",
+      "at": "2026-11-05T13:20"
+    }
+  ]
+}

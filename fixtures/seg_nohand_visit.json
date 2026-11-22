@@ -1,0 +1,44 @@
+{
+  "receipts": [
+    {
+      "event_id": "seg-nohand-start-a",
+      "job": "seg-nohand",
+      "kind": "start",
+      "at": "2026-11-05T09:00",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-nohand-end-a",
+      "job": "seg-nohand",
+      "kind": "end",
+      "at": "2026-11-05T13:00",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-nohand-start-b",
+      "job": "seg-nohand",
+      "kind": "start",
+      "at": "2026-11-05T09:00",
+      "address": "home-a",
+      "worker": "worker-b",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-nohand-end-b",
+      "job": "seg-nohand",
+      "kind": "end",
+      "at": "2026-11-05T13:00",
+      "address": "home-a",
+      "worker": "worker-b",
+      "client": "client-a",
+      "task": "clean"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "receipts": [
+    {
+      "event_id": "seg-relay-start-a",
+      "job": "seg-relay",
+      "kind": "start",
+      "at": "2026-11-05T09:00",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-relay-end-a",
+      "job": "seg-relay",
+      "kind": "end",
+      "at": "2026-11-05T13:00",
+      "address": "home-a",
+      "worker": "worker-a",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-relay-start-b",
+      "job": "seg-relay",
+      "kind": "start",
+      "at": "2026-11-05T09:00",
+      "address": "home-a",
+      "worker": "worker-b",
+      "client": "client-a",
+      "task": "clean"
+    },
+    {
+      "event_id": "seg-relay-end-b",
+      "job": "seg-relay",
+      "kind": "end",
+      "at": "2026-11-05T13:00",
+      "address": "home-a",
+      "worker": "worker-b",
+      "client": "client-a",
+      "task": "clean"
+    }
+  ],
+  "acceptances": [
+    {
+      "event_id": "seg-relay-accept-general",
+      "job": "seg-relay",
+      "task": "clean",
+      "accepted": true,
+      "client": "client-a"
+    },
+    {
+      "event_id": "seg-relay-accept-b",
+      "job": "seg-relay",
+      "task": "clean",
+      "accepted": true,
+      "client": "client-a",
+      "worker": "worker-b",
+      "win_start": "2026-11-05T11:00",
+      "win_end": "2026-11-05T13:00"
+    },
+    {
+      "event_id": "seg-relay-dispute-a",
+      "job": "seg-relay",
+      "task": "clean",
+      "accepted": false,
+      "client": "client-a",
+      "dispute": "worker-a late-window quality issue",
+      "worker": "worker-a",
+      "win_start": "2026-11-05T11:00",
+      "win_end": "2026-11-05T13:00"
+    }
+  ]
+}
