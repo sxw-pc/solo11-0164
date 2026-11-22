@@ -21,12 +21,17 @@ def audit(db):
 
 def main(argv=None):
     p=argparse.ArgumentParser(prog='homevisit')
-    p.add_argument('command',choices=['contract-import','worker-import','visit-import','offer-import','report','audit','demo'])
-    p.add_argument('--db',required=True);p.add_argument('--file');a=p.parse_args(argv)
+    p.add_argument('command',choices=['contract-import','worker-import','visit-import','offer-import','quote','report','audit','demo'])
+    p.add_argument('--db',required=True);p.add_argument('--file');p.add_argument('--service');p.add_argument('--region',default='')
+    a=p.parse_args(argv)
     db=connect(a.db)
     try:
         if a.command=='report':print(dumps(db));return
         if a.command=='audit':print(json.dumps(audit(db),ensure_ascii=False));return
+        if a.command=='quote':
+            if not a.service:p.error('--service required')
+            from .pricing import quote_detail
+            print(json.dumps(quote_detail(db,a.service,a.region),ensure_ascii=False,indent=2));return
         if a.command=='demo':
             root=Path(__file__).parent.parent/'fixtures'
             for command,name in [('contract-import','contract_ok.json'),('worker-import','worker_ok.json'),('visit-import','visit_ok.json')]:
