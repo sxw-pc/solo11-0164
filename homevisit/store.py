@@ -16,6 +16,11 @@ CREATE TABLE IF NOT EXISTS settlement_decision(job TEXT PRIMARY KEY,state TEXT N
 CREATE TABLE IF NOT EXISTS decision_history(id INTEGER PRIMARY KEY,subsystem TEXT NOT NULL,job TEXT NOT NULL,version INTEGER NOT NULL,state TEXT NOT NULL,reason TEXT NOT NULL,at TEXT DEFAULT CURRENT_TIMESTAMP);
 CREATE TABLE IF NOT EXISTS applicant_mail(event_id TEXT PRIMARY KEY,message_id TEXT NOT NULL,sender TEXT NOT NULL,received_at TEXT NOT NULL,subject TEXT NOT NULL,body TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS applicant_case(sender TEXT PRIMARY KEY,state TEXT NOT NULL,message_count INTEGER NOT NULL,latest_subject TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS interview_invite(invitation TEXT PRIMARY KEY,event_id TEXT NOT NULL,message_id TEXT NOT NULL,sender TEXT NOT NULL,recipient TEXT NOT NULL,position TEXT NOT NULL,slot_start TEXT NOT NULL,slot_end TEXT NOT NULL,timezone TEXT NOT NULL,channel TEXT NOT NULL,capacity INTEGER NOT NULL,reply_by TEXT NOT NULL,policy TEXT NOT NULL,sent_at TEXT NOT NULL,signed_by TEXT NOT NULL,seat TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS interview_reply(event_id TEXT PRIMARY KEY,message_id TEXT NOT NULL,in_reply_to TEXT,sender TEXT NOT NULL,sent_at TEXT NOT NULL,invitation TEXT,intent TEXT NOT NULL,forwarded INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS interview_notice(event_id TEXT PRIMARY KEY,kind TEXT NOT NULL,message_id TEXT NOT NULL,in_reply_to TEXT,sender TEXT NOT NULL,sent_at TEXT NOT NULL,invitation TEXT,target_message TEXT,signed INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS seat_notice(seat TEXT NOT NULL,kind TEXT NOT NULL,applicant TEXT NOT NULL,detail TEXT NOT NULL,PRIMARY KEY(seat,kind,applicant));
+CREATE TABLE IF NOT EXISTS seat_decision(job TEXT PRIMARY KEY,state TEXT NOT NULL,reason TEXT NOT NULL,confirmed TEXT NOT NULL,proposed TEXT NOT NULL,waitlist TEXT NOT NULL,pending TEXT NOT NULL,manual TEXT NOT NULL,version INTEGER NOT NULL);
 """
 
 def connect(path):

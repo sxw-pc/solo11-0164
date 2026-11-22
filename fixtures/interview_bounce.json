@@ -1,0 +1,4 @@
+{"messages":[
+{"event_id":"interview-bounce-1","received_at":"2026-11-06T07:01:00+08:00","eml":"From: MAILER-DAEMON@example.test\nTo: Recruiting <jobs@example.test>\nSubject: Delivery Status Notification (Failure)\nMessage-ID: <bounce-confirm-on-2@example.test>\nDate: Fri, 06 Nov 2026 07:00:00 +0800\nContent-Type: text/plain; charset=utf-8\n\nOriginal-Message-ID: <confirm-on-2@example.test>\nStatus: 5.1.1\n\nDelivery to the recipient failed permanently."},
+{"event_id":"interview-bounce-2","received_at":"2026-11-06T07:31:00+08:00","eml":"From: MAILER-DAEMON@example.test\nTo: Recruiting <jobs@example.test>\nSubject: Delivery Status Notification (Failure)\nMessage-ID: <bounce-invite-rem-1@example.test>\nDate: Fri, 06 Nov 2026 07:30:00 +0800\nContent-Type: text/plain; charset=utf-8\n\nOriginal-Message-ID: <invite-rem-1@example.test>\nStatus: 5.1.1\n\nDelayed notice: delivery to the recipient failed."}
+]}

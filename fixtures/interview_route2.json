@@ -1,0 +1,4 @@
+{"messages":[
+{"event_id":"interview-route2-1","received_at":"2026-11-05T12:01:00+08:00","eml":"From: Recruiting <jobs@example.test>\nTo: jia@example.test\nSubject: Interview Confirmation INV-REM-1\nMessage-ID: <confirm-rem-1@example.test>\nDate: Thu, 05 Nov 2026 12:00:00 +0800\nContent-Type: text/plain; charset=utf-8\n\nConfirmation-For: INV-REM-1\nSigned: recruiter-ops\n\nYour interview seat is confirmed."},
+{"event_id":"interview-route2-2","received_at":"2026-11-05T12:06:00+08:00","eml":"From: Recruiting <jobs@example.test>\nTo: yi@example.test\nSubject: Interview Confirmation INV-ON-2\nMessage-ID: <confirm-on-2@example.test>\nDate: Thu, 05 Nov 2026 12:05:00 +0800\nContent-Type: text/plain; charset=utf-8\n\nConfirmation-For: INV-ON-2\nSigned: recruiter-ops\n\nYour interview seat is confirmed."}
+]}
