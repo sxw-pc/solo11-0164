@@ -1,0 +1,19 @@
+{
+  "bags": [
+    {"bag_id": "bag-B", "exam": "cleaning-safety-ab", "version": "B", "sealed_at": "2026-11-04T08:05:00"}
+  ],
+  "handoffs": [
+    {"event_id": "hand-b-1", "bag_id": "bag-B", "paper_id": null, "signer_a": "invigilator-chen", "signer_b": "invigilator-zhao", "handed_at": "2026-11-04T08:35:00"},
+    {"event_id": "hand-b-2", "bag_id": "bag-B", "paper_id": "P", "signer_a": "invigilator-chen", "signer_b": "invigilator-zhao", "handed_at": "2026-11-04T08:50:00"}
+  ],
+  "issues": [
+    {"event_id": "issue-p", "bag_id": "bag-B", "paper_id": "P", "room": "room-1", "seat_label": "S12", "issued_at": "2026-11-04T09:05:00", "signer_a": "invigilator-chen", "signer_b": "invigilator-zhao"}
+  ],
+  "seat_charts": [
+    {"event_id": "chart-early-1", "exam": "cleaning-safety-ab", "room": "room-1", "seat_label": "S07", "candidate": "甲", "effective_at": "2026-11-04T08:20:00"},
+    {"event_id": "chart-late-1", "exam": "cleaning-safety-ab", "room": "room-1", "seat_label": "S12", "candidate": "甲", "effective_at": "2026-11-04T09:20:00"}
+  ],
+  "seat_moves": [
+    {"event_id": "move-jia-1", "exam": "cleaning-safety-ab", "candidate": "甲", "room": "room-1", "from_seat": "S07", "to_seat": "S12", "moved_at": "2026-11-04T09:00:00", "signer_a": "invigilator-chen", "signer_b": "invigilator-zhao"}
+  ]
+}

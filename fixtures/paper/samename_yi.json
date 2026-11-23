@@ -1,0 +1,23 @@
+{
+  "sheet_scans": [
+    {
+      "event_id": "scan-namepeer-1",
+      "paper_id": "P-peer",
+      "exam": "cleaning-safety-ab",
+      "candidate": "甲",
+      "scanned_at": "2026-11-04T13:10:00",
+      "answers": {"q1": "D", "q2": "D", "q3": "D"}
+    }
+  ],
+  "notices": [
+    {
+      "notice_id": "notice-manual-peer",
+      "paper_id": "P-peer",
+      "exam": "cleaning-safety-ab",
+      "candidate": "甲",
+      "kind": "result",
+      "body": "{\"state\": \"pending_review\", \"score\": 0}",
+      "sent_at": "2026-11-04T16:00:00"
+    }
+  ]
+}

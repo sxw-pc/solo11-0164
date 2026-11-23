@@ -1,0 +1,12 @@
+{
+  "bags": [
+    {"bag_id": "bag-A", "exam": "cleaning-safety-ab", "version": "A", "sealed_at": "2026-11-04T08:00:00"}
+  ],
+  "handoffs": [
+    {"event_id": "hand-a-1", "bag_id": "bag-A", "paper_id": null, "signer_a": "invigilator-li", "signer_b": "invigilator-wang", "handed_at": "2026-11-04T08:30:00"},
+    {"event_id": "hand-a-2", "bag_id": "bag-A", "paper_id": "P", "signer_a": "invigilator-li", "signer_b": "invigilator-wang", "handed_at": "2026-11-04T08:45:00"}
+  ],
+  "qr_fragments": [
+    {"event_id": "qr-p-a", "paper_id": "P", "exam": "cleaning-safety-ab", "version": "A", "bag_id": "bag-A", "recovered_at": "2026-11-04T14:00:00"}
+  ]
+}

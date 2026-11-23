@@ -1,0 +1,23 @@
+{
+  "versions": [
+    {
+      "exam": "cleaning-safety-ab",
+      "version": "A",
+      "question_map": {"q1": "k1", "q2": "k2", "q3": "k3"},
+      "answers": {"q1": "A", "q2": "B", "q3": "C"},
+      "pass_mark": 2
+    },
+    {
+      "exam": "cleaning-safety-ab",
+      "version": "B",
+      "question_map": {"q1": "k2", "q2": "k1", "q3": "k3"},
+      "answers": {"q1": "B", "q2": "A", "q3": "C"},
+      "pass_mark": 2
+    }
+  ],
+  "knowledge_keys": [
+    {"exam": "cleaning-safety-ab", "question": "k1", "answer": "A"},
+    {"exam": "cleaning-safety-ab", "question": "k2", "answer": "B"},
+    {"exam": "cleaning-safety-ab", "question": "k3", "answer": "C"}
+  ]
+}
