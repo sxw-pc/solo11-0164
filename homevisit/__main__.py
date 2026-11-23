@@ -29,7 +29,7 @@ def main(argv=None):
         if a.command=='audit':print(json.dumps(audit(db),ensure_ascii=False));return
         if a.command=='demo':
             root=Path(__file__).parent.parent/'fixtures'
-            for command,name in [('contract-import','contract_ok.json'),('worker-import','worker_ok.json'),('visit-import','visit_ok.json')]:
+            for command,name in [('contract-import','contract_ok.json'),('worker-import','worker_ok.json'),('visit-import','visit_ok.json'),('review-import','review_ok.json')]:
                 run_import(db,command,(root/name).read_bytes())
             print(dumps(db));return
         if not a.file:p.error('--file required')

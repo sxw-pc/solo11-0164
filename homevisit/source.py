@@ -2,8 +2,17 @@ import hashlib
 import json
 
 
+def canonical(value):
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+
+
+def offline_sign(payload):
+    """Deterministic offline evidence label for synthetic cross-site signatures."""
+    return hashlib.sha256(canonical(payload).encode()).hexdigest()
+
+
 def record(db, event_id, kind, value):
-    body = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+    body = canonical(value)
     sha = hashlib.sha256(body.encode()).hexdigest()
     old = db.execute('SELECT kind,sha FROM evidence WHERE event_id=?', (event_id,)).fetchone()
     if old:

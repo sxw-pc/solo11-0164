@@ -9,7 +9,11 @@ def report(db):
             item[key]=dict(found) if found else None
         item['history']=[dict(r) for r in db.execute('SELECT subsystem,version,state,reason FROM decision_history WHERE job=? ORDER BY id',(job,))]
         jobs.append(item)
-    return {'jobs':jobs,'reviews':[dict(r) for r in db.execute('SELECT * FROM review_entry ORDER BY platform,review_key')],
+    policy=db.execute('SELECT policy FROM review_policy WHERE id=1').fetchone()
+    return {'jobs':jobs,'reviews':[dict(r) for r in db.execute('SELECT * FROM review_entry ORDER BY platform,review_key,job')],
+            'attributions':[dict(r) for r in db.execute('SELECT * FROM page_attribution ORDER BY event_id')],
+            'identity_cases':[dict(r) for r in db.execute('SELECT * FROM identity_case ORDER BY case_id')],
+            'review_policy':policy['policy'] if policy else 'conservative',
             'quality_cases':[dict(r) for r in db.execute('SELECT * FROM quality_case ORDER BY job')],
             'evidence_count':db.execute('SELECT COUNT(*) FROM evidence').fetchone()[0],
             'source_files':[dict(r) for r in db.execute('SELECT kind,sha FROM file_journal ORDER BY id')]}
